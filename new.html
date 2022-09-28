@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form valid</title>
+    <link rel="stylesheet" href="./bootstrap-5.2.0-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <img src="./img/specials-3.jpg" alt="">
+            </div>
+            <div class="col bg-warning">
+                <h2 class="text-capitalize text-center my-4">registration form</h2><br>
+                <form class="mx-5" id="form">
+                    <label>username</label><br>
+                    <input type="text"  placeholder="user name" id="name">
+                    <p id="head1"></p>
+                    <label>e-mail</label><br>
+                    <input type="text" placeholder="email" id="email">
+                    <p id="heade"></p>
+                    <label>password</label><br>
+                    <input type="password" placeholder="password" id="pass">
+                    <p id="head2"></p>
+                    <label>conform password</label><br>
+                    <input type="password" placeholder="conformpassword" id="conformpass">
+                    <p id="headc"></p>
+                    <label>date</label><br>
+                    <input type="date" name="dob" placeholder="date">
+                    <p id="head3"></p>
+                    <label for="">gender</label><br>
+                    <input type="radio" name="gender">male
+                    <input type="radio" name="gender">female <br><br>
+                    <input type="checkbox" class="lead">i agree <br><br>
+                    <label for="">select your favourite</label><br>
+                    <select>
+                    <option value="">sbk</option>
+                    <option value="">dac</option>
+                    <option value="">psg</option>
+                </select><br><br>
+                    <button class="btn btn-outline-dark"  onclick="formvalidation()">submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- =========== script ========== --> 
+<script>
+     form.addEventListener('submit',e => {
+      e.preventDefault(); 
+});   
+ function formvalidation(){
+    var name=document.getElementById("name").value
+    var fnamepattern=/^([a-zA-Z]|\s)*$/;
+    if (name==null||name==""){
+        document.getElementById("head1").innerHTML="please enter the name";
+    }
+    else if(!fnamepattern.test(name)){
+        document.getElementById("head1").innerHTML="please enter the validname";
+    }
+    else{
+        document.getElementById("head1").innerHTML="";
+    }
+/* ============================    mail  ======================================== */
+    
+    var mail=document.getElementById("email").value
+    var gmailpattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if(mail==null||mail==""){
+    document.getElementById("heade").innerHTML="please enter the email";
+    }
+    else if(!gmailpattern.test(mail)){
+        document.getElementById("heade").innerHTML="please enter the valid email"; 
+    }
+    else{
+        document.getElementById("heade").innerHTML="";
+    }
+    /* ======================================================================================== */
+    var password=document.getElementById("pass").value;
+    var passpattern=/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{1,7}$/;
+    if(password==null||password==""){
+    document.getElementById("head2").innerHTML="please enter the password";
+    }
+    else{
+        document.getElementById("head2").innerHTML="";
+    }
+    /* ======================================================================================= */
+     var conformpassword=document.getElementById("conformpass").value
+    if(conformpassword==null||conformpassword==""){
+        document.getElementById("headc").innerHTML="please enter the password";
+    }
+    else if(password !== conformpassword){
+        document.getElementById("headc").innerHTML="password does not match"
+    }
+    else{
+        document.getElementById("headc").innerHTML="";
+    } 
+ /* ======================================================================================== */
+    
+}
+
+</script>
+</body>
+</html>
